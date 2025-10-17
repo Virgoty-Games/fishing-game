@@ -1,3 +1,60 @@
-[gd_scene format=3 uid="uid://c4y2naa22ua5h"]
+[gd_scene load_steps=7 format=3 uid="uid://c4y2naa22ua5h"]
 
-[node name="CSGBox3D" type="CSGBox3D"]
+[ext_resource type="Script" uid="uid://bwlbravpp7kd0" path="res://Script/Player/CameraShip.gd" id="1_a2kvu"]
+[ext_resource type="PackedScene" uid="uid://mvllsh3x8srs" path="res://Nodes/Player.tscn" id="1_k3834"]
+[ext_resource type="Script" uid="uid://0thcs1iwuni2" path="res://Script/Environment/Water/WaterPosition.gd" id="2_ae35o"]
+[ext_resource type="Shader" uid="uid://cnm01be5qxrhh" path="res://Script/Environment/Water/Ocean.gdshader" id="2_vmytl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k3834"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2kvu"]
+render_priority = 0
+shader = ExtResource("2_vmytl")
+shader_parameter/SEA_LEVEL = 0.0
+shader_parameter/TIME_SCALE = 0.35
+shader_parameter/AMPL_1 = 0.05
+shader_parameter/WAVEL_1 = 20.0
+shader_parameter/STEEP_1 = 0.35
+shader_parameter/DIR_1 = Vector2(1, 0.2)
+shader_parameter/AMPL_2 = 0.0
+shader_parameter/WAVEL_2 = 20.0
+shader_parameter/STEEP_2 = 0.45
+shader_parameter/DIR_2 = Vector2(-0.6, 1)
+shader_parameter/TILING = 0.06
+shader_parameter/WATER_COLOR = Color(0.065, 0.18, 0.26, 1)
+shader_parameter/FOAM_COLOR = Color(0.92, 0.95, 0.98, 1)
+shader_parameter/U_METALLIC = 0.0
+shader_parameter/U_ROUGHNESS = 0.2
+shader_parameter/EDGE_FADE = 0.006
+shader_parameter/EDGE_STRENGTH = 1.1
+shader_parameter/REFRACTION = 0.008
+shader_parameter/UNDER_TINT = 0.18
+shader_parameter/QUANTIZATION = 3.0
+shader_parameter/CAUSTICS_SCALE = 0.12
+shader_parameter/CAUSTICS_SPEED = 0.15
+shader_parameter/CAUSTICS_STRENGTH = 0.45
+shader_parameter/CAUSTICS_CONTRAST = 1.35
+shader_parameter/CAUSTICS_FADE = 0.35
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.0131075885, 0.5982716, -0.8011862, 0, 0.80125505, 0.598323, 0.9999141, -0.0078425715, 0.010502522, -18.985168, 23.205372, 0.029690355)
+keep_aspect = 0
+current = true
+fov = 85.0
+script = ExtResource("1_a2kvu")
+target = NodePath("../Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.61566305, 0.57396317, -0.5399309, 0, 0.68518317, 0.72837085, 0.7880096, 0.448431, -0.42184195, -23.295609, 35.857723, -17.306559)
+
+[node name="Player" parent="." instance=ExtResource("1_k3834")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31009865, -4.7683716e-07, 0.048819542)
+
+[node name="Ocean" type="MeshInstance3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0.048841476, 0.114011765, 0.04230094)
+mesh = SubResource("PlaneMesh_k3834")
+surface_material_override/0 = SubResource("ShaderMaterial_a2kvu")
+script = ExtResource("2_ae35o")
+target = NodePath("../Player")
