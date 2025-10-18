@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 @export_group("Motor")
 @export var engine_force: float = 18.0
-@export var max_speed_forward: float = 8.0
-@export var max_speed_reverse: float = 3.0
+@export var max_speed_forward: float = 15.0
+@export var max_speed_reverse: float = 6.0
 @export var throttle_response: float = 2.5
 
 @export_group("Agua / Drag")
@@ -12,7 +12,7 @@ extends CharacterBody3D
 @export var linear_damping: float = 0.15
 
 @export_group("Timón / Giro")
-@export var turn_power: float = 1.6
+@export var turn_power: float = 3.5
 @export var angular_damping: float = 1.8
 @export var angular_drag: float = 0.6
 @export var align_hull: float = 1.5

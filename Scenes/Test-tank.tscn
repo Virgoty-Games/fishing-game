@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://c4y2naa22ua5h"]
+[gd_scene load_steps=24 format=3 uid="uid://c4y2naa22ua5h"]
 
 [ext_resource type="Script" uid="uid://bwlbravpp7kd0" path="res://Script/Player/CameraShip.gd" id="1_f2nln"]
 [ext_resource type="PackedScene" uid="uid://mvllsh3x8srs" path="res://Nodes/Player.tscn" id="2_efk68"]
 [ext_resource type="Shader" uid="uid://cnm01be5qxrhh" path="res://Script/Environment/Water/Ocean.gdshader" id="3_06fis"]
+[ext_resource type="Script" uid="uid://dwxs5e0f6fe3x" path="res://Script/Player/ShipMovement.gd" id="3_54spq"]
 [ext_resource type="Script" uid="uid://0thcs1iwuni2" path="res://Script/Environment/Water/WaterPosition.gd" id="4_mma61"]
 [ext_resource type="Script" uid="uid://creku0h7jqe4i" path="res://Script/Environment/Rocks/RockPool.gd" id="5_3la1u"]
 [ext_resource type="ArrayMesh" uid="uid://b4sk2p460ikis" path="res://Models/Environment/Rocks/rock-01.obj" id="6_c5xim"]
@@ -71,8 +72,10 @@ transform = Transform3D(-0.61566305, 0.57396317, -0.5399309, 0, 0.68518317, 0.72
 
 [node name="Player" parent="." instance=ExtResource("2_efk68")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31009865, -0.76865625, 0.048819542)
-max_speed_forward = 12.0
-max_speed_reverse = 6.0
+script = ExtResource("3_54spq")
+move_speed = 5.5
+turn_speed = 1.25
+accel = 1.0
 
 [node name="Ocean" type="MeshInstance3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0.048841476, 0.114011765, 0.04230094)
