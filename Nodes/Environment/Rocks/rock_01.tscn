@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpqufx8uiw6j4"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4sk2p460ikis" path="res://Models/Environment/Rocks/rock-01.obj" id="1_ri0vq"]
+[ext_resource type="Script" uid="uid://b1xg61g4yttrs" path="res://Script/Environment/Rocks/Rock.gd" id="2_qyxjo"]
+
+[node name="Rock01" type="MeshInstance3D"]
+mesh = ExtResource("1_ri0vq")
+script = ExtResource("2_qyxjo")

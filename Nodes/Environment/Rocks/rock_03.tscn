@@ -1,0 +1,18 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk50ht54lpkpp"]
+
+[ext_resource type="ArrayMesh" uid="uid://driihfg5ef5lb" path="res://Models/Environment/Rocks/rock-08.obj" id="1_mqyfc"]
+[ext_resource type="Script" uid="uid://b1xg61g4yttrs" path="res://Script/Environment/Rocks/Rock.gd" id="2_yea0q"]
+[ext_resource type="Texture2D" uid="uid://c7ihtcb7ewrwi" path="res://Models/Environment/Rocks/Texture2D/rocks_below_water.png" id="3_tuerw"]
+[ext_resource type="Texture2D" uid="uid://x02gfselsr4v" path="res://Models/Environment/Rocks/Texture2D/rocks_above_water.png" id="4_y75kr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mvef"]
+albedo_texture = ExtResource("3_tuerw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ku7mm"]
+albedo_texture = ExtResource("4_y75kr")
+
+[node name="Rock08" type="MeshInstance3D"]
+mesh = ExtResource("1_mqyfc")
+script = ExtResource("2_yea0q")
+material_underwater = SubResource("StandardMaterial3D_4mvef")
+material_surface = SubResource("StandardMaterial3D_ku7mm")

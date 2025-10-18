@@ -1,0 +1,108 @@
+[gd_scene load_steps=23 format=3 uid="uid://c4y2naa22ua5h"]
+
+[ext_resource type="Script" uid="uid://bwlbravpp7kd0" path="res://Script/Player/CameraShip.gd" id="1_f2nln"]
+[ext_resource type="PackedScene" uid="uid://mvllsh3x8srs" path="res://Nodes/Player.tscn" id="2_efk68"]
+[ext_resource type="Shader" uid="uid://cnm01be5qxrhh" path="res://Script/Environment/Water/Ocean.gdshader" id="3_06fis"]
+[ext_resource type="Script" uid="uid://0thcs1iwuni2" path="res://Script/Environment/Water/WaterPosition.gd" id="4_mma61"]
+[ext_resource type="Script" uid="uid://creku0h7jqe4i" path="res://Script/Environment/Rocks/RockPool.gd" id="5_3la1u"]
+[ext_resource type="ArrayMesh" uid="uid://b4sk2p460ikis" path="res://Models/Environment/Rocks/rock-01.obj" id="6_c5xim"]
+[ext_resource type="ArrayMesh" uid="uid://dky7qsato2leg" path="res://Models/Environment/Rocks/rock-03.obj" id="7_b07cf"]
+[ext_resource type="ArrayMesh" uid="uid://driihfg5ef5lb" path="res://Models/Environment/Rocks/rock-08.obj" id="8_x8mav"]
+[ext_resource type="ArrayMesh" uid="uid://ktsk4q37qw5c" path="res://Models/Environment/Rocks/rock-09.obj" id="9_07y4a"]
+[ext_resource type="ArrayMesh" uid="uid://38w533fweww2" path="res://Models/Environment/Rocks/rock-10.obj" id="10_65pw5"]
+[ext_resource type="ArrayMesh" uid="uid://os3d0dsjc8qy" path="res://Models/Environment/Rocks/rock-11.obj" id="11_vipjb"]
+[ext_resource type="Texture2D" uid="uid://c7ihtcb7ewrwi" path="res://Models/Environment/Rocks/Texture2D/rocks_below_water.png" id="12_mamcd"]
+[ext_resource type="Texture2D" uid="uid://x02gfselsr4v" path="res://Models/Environment/Rocks/Texture2D/rocks_above_water.png" id="13_tww1q"]
+[ext_resource type="Script" uid="uid://q8vdpewpbkae" path="res://Script/Environment/Rocks/RockSpawner.gd" id="14_2qiau"]
+[ext_resource type="PackedScene" uid="uid://dpqufx8uiw6j4" path="res://Nodes/Environment/Rocks/rock_01.tscn" id="15_07y4a"]
+[ext_resource type="PackedScene" uid="uid://d1c6k424p5qs5" path="res://Nodes/Environment/Rocks/rock_02.tscn" id="16_65pw5"]
+[ext_resource type="PackedScene" uid="uid://bk50ht54lpkpp" path="res://Nodes/Environment/Rocks/rock_03.tscn" id="17_vipjb"]
+[ext_resource type="PackedScene" uid="uid://dvhfgut8hbwlu" path="res://Nodes/Environment/Rocks/rock_04.tscn" id="18_mamcd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k3834"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2kvu"]
+render_priority = 0
+shader = ExtResource("3_06fis")
+shader_parameter/SEA_LEVEL = 0.0
+shader_parameter/TIME_SCALE = 0.35
+shader_parameter/AMPL_1 = 0.05
+shader_parameter/WAVEL_1 = 20.0
+shader_parameter/STEEP_1 = 0.35
+shader_parameter/DIR_1 = Vector2(1, 0.2)
+shader_parameter/AMPL_2 = 0.0
+shader_parameter/WAVEL_2 = 20.0
+shader_parameter/STEEP_2 = 0.45
+shader_parameter/DIR_2 = Vector2(-0.6, 1)
+shader_parameter/TILING = 0.06
+shader_parameter/WATER_COLOR = Color(0.065, 0.18, 0.26, 1)
+shader_parameter/FOAM_COLOR = Color(0.92, 0.95, 0.98, 1)
+shader_parameter/U_METALLIC = 0.0
+shader_parameter/U_ROUGHNESS = 0.2
+shader_parameter/EDGE_FADE = 0.006
+shader_parameter/EDGE_STRENGTH = 1.1
+shader_parameter/REFRACTION = 0.008
+shader_parameter/UNDER_TINT = 0.18
+shader_parameter/QUANTIZATION = 3.0
+shader_parameter/CAUSTICS_SCALE = 0.12
+shader_parameter/CAUSTICS_SPEED = 0.15
+shader_parameter/CAUSTICS_STRENGTH = 0.45
+shader_parameter/CAUSTICS_CONTRAST = 1.35
+shader_parameter/CAUSTICS_FADE = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50rxc"]
+albedo_texture = ExtResource("12_mamcd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vvoa"]
+albedo_texture = ExtResource("13_tww1q")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.0131075885, 0.5982716, -0.8011862, 0, 0.80125505, 0.598323, 0.9999141, -0.0078425715, 0.010502522, -18.985168, 23.205372, 0.029690355)
+keep_aspect = 0
+current = true
+fov = 85.0
+script = ExtResource("1_f2nln")
+target = NodePath("../Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.61566305, 0.57396317, -0.5399309, 0, 0.68518317, 0.72837085, 0.7880096, 0.448431, -0.42184195, -23.295609, 35.857723, -17.306559)
+
+[node name="Player" parent="." instance=ExtResource("2_efk68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31009865, -0.76865625, 0.048819542)
+
+[node name="Ocean" type="MeshInstance3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0.048841476, 0.114011765, 0.04230094)
+mesh = SubResource("PlaneMesh_k3834")
+surface_material_override/0 = SubResource("ShaderMaterial_a2kvu")
+script = ExtResource("4_mma61")
+target = NodePath("../Player")
+
+[node name="RockPool" type="Node" parent="."]
+script = ExtResource("5_3la1u")
+rock_meshes = Array[Mesh]([ExtResource("6_c5xim"), ExtResource("7_b07cf"), ExtResource("8_x8mav"), ExtResource("9_07y4a"), ExtResource("10_65pw5"), ExtResource("11_vipjb")])
+material_underwater = SubResource("StandardMaterial3D_50rxc")
+material_surface = SubResource("StandardMaterial3D_8vvoa")
+metadata/_custom_type_script = "uid://creku0h7jqe4i"
+
+[node name="RockSpawner" type="Node3D" parent="."]
+script = ExtResource("14_2qiau")
+pool = NodePath("../RockPool")
+player = NodePath("../Player")
+camera = NodePath("../Camera3D")
+underwater_density = 0.8
+surface_spawn_chance = 0.5
+metadata/_custom_type_script = "uid://q8vdpewpbkae"
+
+[node name="Rock01" parent="." instance=ExtResource("15_07y4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.231607, 9.536743e-07, -13.666159)
+
+[node name="Rock03" parent="." instance=ExtResource("16_65pw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.883892, 14.498021, -13.589802)
+
+[node name="Rock08" parent="." instance=ExtResource("17_vipjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.41691, 0, -18.508156)
+
+[node name="Rock09" parent="." instance=ExtResource("18_mamcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.533584, 0, 19.224316)

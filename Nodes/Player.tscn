@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://mvllsh3x8srs"]
 
-[ext_resource type="Script" uid="uid://dwxs5e0f6fe3x" path="res://Script/Player/ShipMovement.gd" id="1_bkgf5"]
+[ext_resource type="Script" uid="uid://c5ntmm2le16yj" path="res://Script/Player/ShipMoveRealistic.gd" id="1_bkgf5"]
 [ext_resource type="PackedScene" uid="uid://o6qjr633jlbr" path="res://Models/Boat.blend" id="2_kl0bm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ae35o"]
