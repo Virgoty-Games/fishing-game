@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mvllsh3x8srs"]
 
 [ext_resource type="Script" uid="uid://c5ntmm2le16yj" path="res://Script/Player/ShipMoveRealistic.gd" id="1_bkgf5"]
-[ext_resource type="PackedScene" uid="uid://o6qjr633jlbr" path="res://Models/Boat.blend" id="2_kl0bm"]
+[ext_resource type="PackedScene" uid="uid://h678ynu1psgc" path="res://Models/Boat.fbx" id="2_bkgf5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ae35o"]
 size = Vector3(7.7000003, 4, 4.6)
@@ -10,7 +10,7 @@ size = Vector3(7.7000003, 4, 4.6)
 motion_mode = 1
 script = ExtResource("1_bkgf5")
 
-[node name="Boat" parent="." instance=ExtResource("2_kl0bm")]
+[node name="Boat" parent="." instance=ExtResource("2_bkgf5")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05000007, 2.5, -0.099999666)
